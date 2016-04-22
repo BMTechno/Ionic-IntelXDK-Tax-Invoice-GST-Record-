@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="ionic/css/ionic.min.css">
+        <title>Blank App Designer Cordova Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <!-- <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:"> -->
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
+  * Note that Windows device viewports work better when initialized using the @viewport CSS rule.
+  * For a quick overview of "meta viewport" and @viewport, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see how it works, try your app on a real device with and without a "meta viewport" tag.
+  * Additional useful references include:
+  *   http://www.quirksmode.org/mobile/viewports.html
+  *   http://www.quirksmode.org/mobile/metaviewport/devices.html
+  *   https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <style type="text/css">
+            div{ 
+              /*background-color: #ECE731;*/
+              /*background-image:url(images/gst-bg.png);*/
+              background-position:center center;
+              background-repeat:no-repeat;
+              background-attachment:fixed;
+              background-size:cover;
+            }
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Recommended location for your JavaScript libraries -->
+        <!-- These library references (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <script src="lib/ft/fastclick.js"></script>
+
+        <!--
+  * cordova.js is a phantom lib for "Cordova HTML5 web app," it does nothing in a "Standard HTML5 web app"
+  * Seeing a "Failed to load resource: net::ERR_FILE_NOT_FOUND" message caused by this "cordova.js" script?
+  * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
+  * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
+-->
+        <script src="cordova.js" id="xdkJScordova_"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <!-- for your init code, see README and file comments for details -->
+        <!-- normalizes device and document ready events, see file for details -->
+
+        <script src="js/init-app.js"></script>
+        <script src="xdk/init-dev.js"></script>
+
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="marginal/marginal-position.js"></script>
+        <script type="application/javascript" src="ionic/js/ionic.bundle.js"></script>
+        <script type="application/javascript" src="js/ng-cordova.min.js"></script>
+        <script type="application/javascript" src="js/index_init_services.js"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="xdk/ad/ionic_subpage.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
+        <script src="js/app.js"></script>
+
+        <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+        <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
+        <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+    </head>
+
+    <body ng-app="myApp" ng-controller="myAppCtrl">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Main Page -->
+        <div class="upage" id="mainpage">
+            <div class="upage-outer fixed-header-footer">
+
+                <!-- Page Menu Utama page_84_95 -->
+                <div class="upage-content ac0 content-area vertical-col left" id="page_84_95">
+
+                    <!-- Start -->
+
+                    <!-- Fail asal Biru INtelXDK: 0170C4 Biru Gelap 282562-->
+
+                    <div class="widget uib_w_93 main-page-img img-margins" data-uib="media/img" data-ver="0">
+
+                        <figure class="figure-align">
+                            <img src="images/minta-resit-logo.png">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <button style="background-color: #0170C4; color: white;" class="button widget uib_w_84 ion button-gambar-resit button-large ion-camera icon-left" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage3()">{{txtAmbilGambar}}</button>
+
+                    <button class="button widget uib_w_94 d-margins button-outline" data-uib="ionic/button" ng-show="false" data-ver="0" ng-click="goToTestPage()">Button</button>
+                    <!-- End Fail asal -->
+
+                    <!-- End -->
+
+                </div>
+
+                <!-- Page Butir Diri -->
+                <div id="page_butir_diri" class="upage-content vertical-col left hidden" style="background-color: white;">
+                    <label class="item item-input widget uib_w_38 header-form-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtNamaPenuh}}</span>
+                        <input type="text" ng-model="participant.name">
+                    </label>
+                    <label class="item item-input widget uib_w_39 form-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtNoIC}}</span>
+                        <input type="text" ng-model="participant.icNo">
+                    </label>
+                    <label class="item item-input widget uib_w_40 form-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtTelefon}}</span>
+                        <input type="text" ng-model="participant.phoneNo">
+                    </label>
+                    <label class="item item-input widget uib_w_40 form-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">Email</span>
+                        <input type="text" ng-model="participant.email">
+                    </label>
+                    <label class="item item-input item-select widget uib_w_99 d-margins" data-uib="ionic/select" data-ver="0">
+                        <div class="input-label">{{txtJantina}}</div>
+                        <select ng-model="participant.jantina">
+                            <option value="">---Please Select---</option>
+                            <option value="Lelaki">{{txtLelaki}}</option>
+                            <option value="Perempuan">{{txtPerempuan}}</option>
+                        </select>
+                    </label>
+                    <label class="item item-input widget uib_w_98 form-margins" data-uib="ionic/textarea" data-ver="0">
+                        <textarea placeholder="{{txtAlamat}}" wrap="soft" rows="3" ng-model="participant.alamat"></textarea>
+                    </label>
+                    <div class="button-bar button-gambar-resit widget uib_w_48 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_49 ion button-calm ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-show="buttonKembaliButirDiri" ng-click="submitInvoicePage3b()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_51 ion button-calm ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-show="buttonSeterusnyaButirDiri" ng-click="industri()">{{txtSeterusnya}}</button>
+                    </div>
+
+                    <button class="button widget uib_w_92 d-margins ion button-calm ion-ios7-download-outline icon-left" data-uib="ionic/button" data-ver="0" ng-click="clickSaveParticipant()" ng-show="showSimpanButton">{{txtSimpan}}</button>
+                    <button ng-show="showSimpanButton" style="background-color: #0170C4; color: white;" class="button widget uib_w_84 ion  button-large ion-camera icon-left" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage3()">{{txtAmbilGambar}}</button>
+
+                </div>
+
+                <!-- Page Butir Invois -->
+                <div id="page_butir_invois" class="upage-content vertical-col left hidden">
+
+                    <label class="item item-input widget uib_w_28 card-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtNoResit}}</span>
+                        <input type="text" ng-model="entry.resitNo">
+                    </label>
+                    <label class="item item-input widget uib_w_29 d-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtNoGST}}</span>
+                        <input type="text" placeholder="GST ID" ng-model="entry.gstId">
+                    </label>
+                    <!--<label class="item item-input widget uib_w_90 d-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtTarikhResit}}</span>
+                        <input type="date" placeholder="yyyy-mm-dd" ng-model="entry.resitDate" value="entry.resitDate | date: 'dd/MM/yyyy'">
+                    </label>-->
+                    <label class="item item-input widget uib_w_100 d-margins item-stacked-label" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtTarikhResit}} (yyyy-mm-dd)</span>
+                        <input type="date" placeholder="yyyy-mm-dd" ng-model="entry.resitDate" value="entry.resitDate | date: 'dd/MM/yyyy'">
+                    </label>
+                    <label class="item item-input widget uib_w_89 d-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtAmaunResit}} (RM)</span>
+                        <input type="text" placeholder="Amaun pembelian termasuk GST" ng-model="entry.resitAmount">
+                    </label>
+                    <label class="item item-input widget uib_w_30 d-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">{{txtAmaunGST}} (RM)</span>
+                        <input type="text" placeholder="Nilai GST yang dibayar" ng-model="entry.gstAmount">
+                    </label>
+                    <label class="item item-input item-select widget uib_w_31 d-margins" data-uib="ionic/select" data-ver="0">
+                        <div class="input-label">{{txtNegeri}}</div>
+                        <select ng-model="entry.negeri">
+                            <option value="">---Please Select---</option>
+                            <option value="SELANGOR">Selangor</option>
+                            <option value="W.P. KL">W.P Kuala Lumpur</option>
+                            <option value="W.P.PUTRAJAYA">W.P Putrajaya</option>
+                            <option value="PERLIS">Perlis</option>
+                            <option value="KEDAH">Kedah</option>
+                            <option value="PULAU PINANG">Pulau Pinang</option>
+                            <option value="PERAK">Perak</option>
+                            <option value="PAHANG">Pahang</option>
+                            <option value="TERENGGANU">Terengganu</option>
+                            <option value="KELANTAN">Kelantan</option>
+                            <option value="NEGERI SEMBILAN">Negeri Sembilan</option>
+                            <option value="MELAKA">Melaka</option>
+                            <option value="JOHOR">Johor</option>
+                            <option value="SABAH">Sabah</option>
+                            <option value="SARAWAK">Sarawak</option>
+                            <option value="W.P. LABUAN">W.P Labuan</option>
+                        </select>
+                    </label>
+
+                    <div class="button-bar button-gambar-resit widget uib_w_48 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_49 ion button-calm ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="industri()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_51 ion button-calm ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="pengesahan()">{{txtSeterusnya}}</button>
+                    </div>
+
+                </div>
+                <!--     Page Butir Gambar -->
+                <div id="page_butir_gambar" class="upage-content vertical-col left hidden">
+                    <div class="tarea widget uib_w_96 d-margins" data-uib="media/text" data-ver="0" name="uib_w_96">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                        </div>
+                    </div>
+
+                    <div class="widget uib_w_45 img-margins camera-image" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="" id="myImage" ng-model="resitImage" style="width: 100%;">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <li class="item item-checkbox widget uib_w_91 d-margins" data-uib="ionic/checkbox" data-ver="0">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="checkboxAgree">
+                        </label>{{txtSayaSetuju}}
+                    </li>
+
+                    <button style="background-color: #0170c4; color: white;" class="button widget uib_w_43 ion ion-android-camera icon-left" data-uib="ionic/button" data-ver="0" ng-click="takePicture()">{{txtAmbilGambarSemula}}</button>
+
+                    <button class="button button-large widget uib_w_84 button-calm ion ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage1()">{{txtSeterusnya}}</button>
+
+                    <!--<button style="background-color: #0170c4; color: white;" class="button widget uib_w_43 ion ion-android-camera icon-left" data-uib="ionic/button" data-ver="0" ng-click="takePicture()">{{txtAmbilGambarSemula}}</button>
+                   
+                    
+                        <button class="button button-large widget uib_w_84 button-calm ion ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage1()">{{txtSeterusnya}}</button>
+                    
+                    
+                    <div class="tarea widget uib_w_96 d-margins" data-uib="media/text" data-ver="0" name="uib_w_96">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                        </div>
+                    </div>-->
+
+                </div>
+
+                <!--     Page Penyertaan Lepas -->
+                <div id="page_penyertaan_lepas" class="upage-content left hidden">
+
+                    <div class="card" ng-show="showPenyertaanLepas">
+                        <div class="item item-divider">
+                            {{txtPenyertaanLepas}}
+                        </div>
+                        <div class="item item-text-wrap">
+                            <div>
+                                {{txtNoEntry}}
+                            </div>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="list card" ng-repeat="item in entriesLocal track by item.localId">
+                        <div class="item item body">
+                            <div class="widget uib_w_45 d-margins past-gst" data-uib="media/img" data-ver="0">
+                                <!--<a href="#">-->
+                                <img src="data:image/jpeg;base64,{{item.image}}">
+                                <div class="item item-text-wrap">
+                                    <div>
+                                        <p>{{txtKategori}}: {{item.kategori}}</p>
+                                        <p>{{txtNoResit}}: {{item.resitNo}}</p>
+                                        <p>{{txtNoGST}}: {{item.gstId}}</p>
+                                        <p>{{txtAmaunResit}}: RM {{item.resitAmount}}</p>
+                                        <p>{{txtAmaunGST}}: RM {{item.gstAmount}}</p>
+
+                                        <p>{{txtNegeri}}: {{item.negeri}}</p>
+                                    </div>
+                                    <br>
+                                </div>
+                                <!--</a>-->
+                            </div>
+                        </div>
+                        <div class="tabs tabs secondary tabs-icon-left">
+                            <a href="#" class="tab-item" ng-click="">
+                                <i class="icon ion-calendar"></i>
+                                <span ng-bind="item.resitDate | date:'dd/MM/yyyy'">
+                            </span>
+                            </a>
+                            <!--<a href="#" class="tab-item" ng-click="">
+                                <i class="icon ion-trash-a"></i>
+                                Padam
+                            </a> -->
+                        </div>
+                    </div>
+                    <!-- <div class="list card">
+                        <div class="item item body">
+                            <div class="widget uib_w_45 d-margins past-gst" data-uib="media/img" data-ver="0">
+                                <a href="#">
+                                    <img src="images/resitgst2.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tabs tabs secondary tabs-icon-left">
+                            <a href="#" class="tab-item" ng-click="">
+                                <i class="icon ion-calendar"></i>
+                                16 Feb 2016
+                            </a>
+                            <a href="#" class="tab-item" ng-click="">
+                                <i class="icon ion-trash-a"></i>
+                                Padam
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div id="page_senarai_pemenang" class="upage-content left hidden">
+                    <div class="card">
+                        <div class="item item-divider">
+                            {{txtSenaraiPemenang}}
+                        </div>
+                        <div class="item item-text-wrap">
+                            <div>
+                                {{txtTiadaRekodPemenang}}
+                            </div>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div class="card">
+                        <div class="item item-divider">
+                            Februari 2016
+                        </div>
+                        <div class="item item-text-wrap">
+                            <div>
+                                Chong Heng Huat
+                            </div>
+                            <p>
+                                XXX-XXXX-5141
+                            </p>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div id="page_penggunaan1" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/1.jpg">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+                    <button class="button widget uib_w_62 d-margins ion button-calm ion-chevron-right button-outline icon-right button-gambar-resit" data-uib="ionic/button" data-ver="0" ng-click="pagePenggunaan2()">
+                        {{txtSeterusnya}}</button>
+                </div>
+
+                <div id="page_penggunaan2" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/2.jpg">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="button-bar button-gambar-resit widget uib_w_80 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_81 button-outline ion button-calm ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="pagePenggunaan1()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_83 button-outline ion button-calm ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="pagePenggunaan3()">{{txtSeterusnya}}</button>
+                    </div>
+
+                </div>
+
+                <div id="page_penggunaan3" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/3.jpg">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="button-bar button-gambar-resit widget uib_w_80 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget button-outline uib_w_81 ion button-calm ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="pagePenggunaan2()">{{txtKembali}}</button>
+                        <button class="button widget button-outline uib_w_83 ion button-calm ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="pagePenggunaan4()">{{txtSeterusnya}}</button>
+                    </div>
+
+                </div>
+
+                <div id="page_penggunaan4" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/4.jpg">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="button-bar button-gambar-resit widget uib_w_80 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_81 ion button-calm button-outline ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="pagePenggunaan3()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_83 ion button-calm button-outline ion-ios7-home  icon-right" data-uib="ionic/button" data-ver="0" ng-click="PageMenuHowTo()">{{txtMenuUtama}}</button>
+                    </div>
+
+                </div>
+
+                <div id="page_sampleInvoice1" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/invoice1.JPG">
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+                    <button class="button widget uib_w_62 d-margins ion button-calm ion-chevron-right button-outline icon-right button-gambar-resit" data-uib="ionic/button" data-ver="0" ng-click="pageSampleInvoice2()">
+                        {{txtSeterusnya}}</button>
+                </div>
+
+                <div id="page_sampleInvoice2" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/invoice2.JPG">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="button-bar button-gambar-resit widget uib_w_80 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget button-outline uib_w_81 ion button-calm ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="pageSampleInvoice1()">{{txtKembali}}</button>
+                        <button class="button widget button-outline uib_w_83 ion button-calm ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="pageSampleInvoice3()">{{txtSeterusnya}}</button>
+                    </div>
+                </div>
+
+                <div id="page_sampleInvoice3" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/invoice3.JPG">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="button-bar button-gambar-resit widget uib_w_80 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_81 ion button-calm button-outline ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="pageSampleInvoice2()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_83 ion button-calm button-outline ion-ios7-home  icon-right" data-uib="ionic/button" data-ver="0" ng-click="PageMenuHowTo()">{{txtMenuUtama}}</button>
+                    </div>
+
+                </div>
+
+                <!-- Side Bar Menu -->
+
+                <div class="inner-element uib_w_54 uib_sidebar leftbar thumb-bg bar-gutter sidemenu-textcolor swipe sidemenu-bg" data-uib="layout/left_sidebar" data-ver="1" data-anim="{'style':'overlap', 'v':200, 'side':'left', 'dur':200}" id="sidebarMenu">
+
+                    <div class="sidebar-content sidemenu-bg content-area vertical-col">
+
+                        <ion-item class="item widget uib_w_55 d-margins sidemenu-bg sidemenu-avatar item-avatar" data-uib="ionic/list_item_avatar" data-ver="0" ng-click="closeSideBar2()">
+                            <img src="images/profile_picture.png">
+                            <h2 class="sidemenu-text">{{participant.name}}</h2>
+                            <p class="sidemenu-text">{{participant.icNo}}</p>
+                        </ion-item>
+                        <ion-list class="widget uib_w_56 d-margins" data-uib="ionic/list" data-ver="0">
+                            <ion-item menu-close="" class="item widget uib_w_57 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="menuUtama()">{{txtMenuUtama}}</ion-item>
+                            <ion-item class="item widget uib_w_58 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="ubahProfile()">{{daftarUbah}}</ion-item>
+                            <ion-item class="item widget uib_w_59 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="penyertaanLepas()" menu-close="">{{txtPenyertaanLepas}}</ion-item>
+                            <ion-item class="item widget uib_w_60 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="pageSenaraiPemenang()">{{txtSenaraiPemenang}}</ion-item>
+                            <ion-item class="item widget uib_w_60 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="pageTermaSyarat()">{{txtTnC}}</ion-item>
+                            <ion-item class="item widget uib_w_60 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="PageMenuHowTo()">{{txtCaraPenggunaan}}</ion-item>
+                            <ion-item class="item widget uib_w_60 sidemenu-bg" data-uib="ionic/list_item" data-ver="0" ng-click="pageTukarBahasa()">{{txtBahasa}}</ion-item>
+                        </ion-list>
+
+                    </div>
+                </div>
+                <div id="page_selesai" class="upage-content vertical-col left hidden">
+                    <div class="widget uib_w_61 scale-image card-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/minta-resit-logo.png">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText pengesahan-text" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p>{{txtBerjaya}}</p>
+                        </div>
+                    </div>
+                    <button class="button widget uib_w_62 d-margins ion button-calm button-large ion-ios7-home icon-left button-gambar-resit" data-uib="ionic/button" data-ver="0" ng-click="menuUtama()">{{txtMenuUtama}}</button>
+                </div>
+
+                <!--     Page Pengesahan -->
+                <div id="page_pengesahan" class="upage-content vertical-col left hidden">
+
+                    <!-- <div class="tarea widget uib_w_64 card-margins" data-uib="media/text" data-ver="0" name="uib_w_64">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div> -->
+
+                    <div class="list card">
+
+                        <a href="#" class="item item-icon-left">
+                            <i class="icon ion-person"></i>
+                            <p style="font-size: 17px;"><strong>{{txtButirDiri}}</strong>
+                            </p>
+                            <p>{{participant.name}}</p>
+                            <p>{{participant.icNo}}</p>
+                            <p>{{participant.jantina}}</p>
+                            <p>{{participant.phoneNo}}</p>
+                            <p>{{participant.alamat}}</p>
+                        </a>
+
+                        <a href="#" class="item item-icon-left">
+                            <i class="icon ion-android-note"></i>
+                            <p style="font-size: 17px;"><strong>{{txtButirInvoice}}</strong>
+                            </p>
+                            <p>{{txtKategori}}: {{entry.kategori}}</p>
+                            <p>{{txtNoResit}}: {{entry.resitNo}}</p>
+                            <p>{{txtNoGST}}: {{entry.gstId}}</p>
+                            <p>{{txtAmaunResit}}: RM {{entry.resitAmount}}</p>
+                            <p>{{txtAmaunGST}}: RM {{entry.gstAmount}}</p>
+                            <p>{{txtTarikhResit}}: <span ng-bind="entry.resitDate | date:'dd/MM/yyyy'"></span>
+                            </p>
+                            <p>{{txtNegeri}}: {{entry.negeri}}</p>
+                        </a>
+
+                        <a href="#" class="item item-icon-left">
+                            <i class="icon ion-image"></i>
+                            <div class="widget uib_w_52 d-margins gst-resit" data-uib="media/img" data-ver="0">
+                                <img class="gstResit" id="myImage5">
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="tarea widget uib_w_63 d-margins doneText" data-uib="media/text" data-ver="0" name="uib_w_63">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div class="text-container">
+                            <p>{{txtSilaSahkan}}</p>
+                        </div>
+                    </div>
+
+                    <!-- </div> -->
+
+                    <div class="button-bar button-gambar-resit widget uib_w_66 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_67 button-calm ion ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage2()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_69 ion button-calm ion-android-send icon-right" data-uib="ionic/button" data-ver="0" ng-click="submitEntry()">{{txtHantar}}</button>
+                    </div>
+
+                </div>
+                <!--  Page Industri -->
+                <div id="page_industri" class="upage-content vertical-col left hidden">
+                    <div class="tarea widget uib_w_70 d-margins" data-uib="media/text" data-ver="0" name="uib_w_70">
+                    </div>
+                    <div class="list widget uib_w_71 d-margins" data-uib="ionic/checkbox_group" data-ver="0"></div>
+                    <div class="list widget uib_w_72 d-margins" data-uib="ionic/radio_button_group" data-ver="0">
+                        <label class="item item-radio widget uib_w_74" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Restoran" ng-checked="false">
+                            <div class="item-content">{{txtRestoran}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_74" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Hardware" ng-checked="false">
+                            <div class="item-content">{{txtHardware}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_75" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Farmasi" ng-checked="false">
+                            <div class="item-content">{{txtFarmasi}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_77" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Kedai Buku" ng-checked="false">
+                            <div class="item-content">{{txtKedaiBuku}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_78" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Mini Market" ng-checked="false">
+                            <div class="item-content">{{txtMiniMarket}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_78" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Hiburan" ng-checked="false">
+                            <div class="item-content">{{txtHiburan}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_78" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Stesyen Minyak" ng-checked="false">
+                            <div class="item-content">{{txtStesyenMinyak}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_78" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Pasaraya" ng-checked="false">
+                            <div class="item-content">{{txtPasaraya}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                        <label class="item item-radio widget uib_w_79" data-uib="ionic/radio_button" data-ver="0">
+                            <input type="radio" name="kategori" ng-model="entry.kategori" value="Lain-lain" ng-checked="false">
+                            <div class="item-content">{{txtLainlain}}</div>
+                            <i class="radio-icon ion-checkmark"></i>
+                        </label>
+                    </div>
+
+                    <div class="button-bar button-gambar-resit widget uib_w_80 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_81 ion button-calm ion-chevron-left icon-left" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage1()">{{txtKembali}}</button>
+                        <button class="button widget uib_w_83 ion button-calm ion-chevron-right icon-right" data-uib="ionic/button" data-ver="0" ng-click="submitInvoicePage2()">{{txtSeterusnya}}</button>
+                    </div>
+                    <div class="list widget uib_w_76 d-margins" data-uib="ionic/radio_button_group" data-ver="0"></div>
+
+                </div>
+                <ion-header-bar class="bar inner-element uib_w_86 bar-dark bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
+                    <div class="buttons widget-container content-area horiz-area wrapping-col">
+                        <button class="button widget uib_w_87 ion button-color ion-navicon-round icon-only" data-uib="ionic/button" data-ver="0" ng-show="showMenu"></button>
+                    </div>
+                    <h1 class="title">{{headerTitle}}</h1>
+                    <div class="buttons widget-container content-area horiz-area wrapping-col"></div>
+                </ion-header-bar>
+                <!-- Test Page -->
+                <div id="testPage" class="upage-content vertical-col left hidden">
+                    <!-- Start Column -->
+                    <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+
+                        <span class="uib_shim"></span>
+                        <div class="col uib_col_3 col-0 bg-img" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="widget uib_w_95 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                    <figure class="figure-align">
+                                        <img src="images/Strabburg.jpg">
+
+                                        <figcaption data-position="bottom"></figcaption>
+                                    </figure>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Column-->
+
+                </div>
+
+                <!-- Page Tukar Bahasa -->
+                <div id="page_tukar_bahasa" class="upage-content vertical-col left hidden">
+                    <div class="tarea widget uib_w_97 d-margins" data-uib="media/text" data-ver="0" name="uib_w_97">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+
+                        <!-- Start -->
+                        <div class="list widget uib_w_71 d-margins" data-uib="ionic/checkbox_group" data-ver="0"></div>
+                        <div class="list widget uib_w_72 d-margins" data-uib="ionic/radio_button_group" data-ver="0">
+                            <label class="item item-radio widget uib_w_74" data-uib="ionic/radio_button" data-ver="0">
+                                <input type="radio" name="kategori" ng-model="language" value="bm" ng-checked="false">
+                                <div class="item-content">Bahasa Melayu</div>
+                                <i class="radio-icon ion-checkmark"></i>
+                            </label>
+                            <label class="item item-radio widget uib_w_74" data-uib="ionic/radio_button" data-ver="0">
+                                <input type="radio" name="kategori" ng-model="language" value="bi" ng-checked="false">
+                                <div class="item-content">English</div>
+                                <i class="radio-icon ion-checkmark"></i>
+                            </label>
+
+                        </div>
+                        <!-- Finish -->
+
+                    </div>
+
+                    <button class="button widget uib_w_83 ion button-calm ion-android-send icon-right" data-uib="ionic/button" data-ver="0" ng-click="clickChangeLanguage()">{{txtTukarBahasa}}</button>
+                </div>
+
+             
+                <!-- Page How To -->
+                <div id="page_MenuHowTo" class="upage-content vertical-col left hidden">
+                    <div class="tarea widget uib_w_97 card-margins" data-uib="media/text" data-ver="0" name="uib_w_97">
+                            <div class="widget-container left-receptacle"></div>
+                            <div class="widget-container right-receptacle"></div>
+                        <ion-list class="list widget uib_w_71 card-margins">
+                            <ion-item class="item item-icon-right" data-uib="ionic/list_item" data-ver="0" ng-click="pagePenggunaan1()">{{txtCaraPenyertaan}}<i class="icon ion-chevron-right"></i></ion-item>
+                            <ion-item class="item item-icon-right" data-uib="ionic/list_item" data-ver="0" ng-click="pageSampleInvoice1()">{{txtContohResit}}<i class="icon ion-chevron-right"></i></ion-item>
+                        </ion-list>
+                    </div>
+                    <button class="button widget uib_w_62 d-margins ion button-calm button-large ion-ios7-home icon-left button-gambar-resit" data-uib="ionic/button" data-ver="0" ng-click="menuUtama()">{{txtMenuUtama}}</button>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
