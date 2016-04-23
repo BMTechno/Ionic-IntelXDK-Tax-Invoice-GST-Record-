@@ -3,7 +3,7 @@
  */
 angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
 
-.factory('Entries', function($firebaseArray) {
+/*.factory('Entries', function($firebaseArray) {
     var itemsRef = new Firebase("https://myresitgst.firebaseio.com/entries");
     return $firebaseArray(itemsRef);
 })
@@ -23,10 +23,14 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
     
     var itemsRef = new Firebase("https://myresitgst.firebaseio.com/participants");
     return $firebaseArray(itemsRef);
-})
+})*/
 
-.controller('myAppCtrl', function($scope, Entries, Participants, $cordovaCamera){
+.controller('myAppCtrl', function($scope, $cordovaCamera){
     
+    $scope.FireBaseURL = "https://myresitgst.firebaseio.com/";
+    
+    var ref = new Firebase($scope.FireBaseURL);
+
     $scope.language = "bi";
     
     if($scope.language == "bm"){
@@ -48,19 +52,17 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
     $scope.showPenyertaanLepas = false;
     
     $scope.participant = {};
-    //$scope.FireBaseParticipantsURL = "https://myresitgstdemo.firebaseio.com/participants";
-    //$scope.FireBaseURL = "https://myresitgstdemo.firebaseio.com/";
-    $scope.FireBaseURL = "https://myresitgst.firebaseio.com/";
+    
     $scope.entry = {};
     $scope.entriesLocal = [];
     $scope.participantsLocal = [];
     $scope.participant.email = "";
     var similarParticipant = null;
-    $scope.participants = Participants;
+   // $scope.participants = Participants;
    // var currentdata = {};
     var users = null;
     
-    $scope.entries = Entries;
+    //$scope.entries = Entries;
     
     var $currentID = 0; //for check current IC
     
@@ -71,7 +73,7 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
     var myPhoneNo = null;
     var myCreateDate = null;
     var myCreateDateSeconds = null;
-    var myRef = new Firebase($scope.FireBaseURL);
+    //var myRef = new Firebase($scope.FireBaseURL);
     
     
     //Setup local data
@@ -121,15 +123,15 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
         $scope.$index = JSON.parse($index);
     }
     
+    
     firebaseSession = function(){
         
-        var fbRef = new Firebase($scope.FireBaseURL);
-        fbRef.authAnonymously(function(error, authData) {
-          if (error) {
-            console.log("Login Failed!", error);
-          } else {
-            console.log("Authenticated successfully with payload:", authData);
-          }
+        ref.authAnonymously(function(error, authData) {
+            if (error) {
+                console.log("Login Failed!", error);
+            } else {
+                console.log("Authenticated successfully with payload:", authData);
+            }
         }, {
             remember: "sessionOnly"
         });
@@ -146,10 +148,12 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
             $scope.headerTitle = $scope.txtHeaderButirDiri; //"Butir Diri";
             
             getParticipantsData()
-            //firebaseSession()
             
-        
+            Firebase.goOnline();
+            
             navigator.notification.alert($scope.txtSilaPastikanVersi);
+            
+            firebaseSession()
             activate_subpage('#page_butir_diri');
         } else{
             //alert("Anda perlu setuju dengan Terma & Syarat");
@@ -310,8 +314,11 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
         //If user already exist, update current user to firebase with UniqueID..
                     
         //This is real code..
-        var usersRef = new Firebase($scope.FireBaseURL + "participants");
+        //var usersRef = new Firebase($scope.FireBaseURL + "participants");
+        
+        var usersRef = ref.child("participants");
         var participantsRef = usersRef.child($scope.participant.uniqueID);
+        
         participantsRef.update({
                 "name": $scope.participant.name,
                 "icNo": $scope.participant.icNo,
@@ -319,7 +326,7 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
                 "jantina": $scope.participant.jantina,
                 "alamat": $scope.participant.alamat,
                 "email": $scope.participant.email,
-                "createDateSeconds": $scope.participant.createDateSeconds-600,
+                "createDateSeconds": $scope.participant.createDateSeconds-1200,
                 "modifiedDate": $scope.participant.modifiedDate,
                 "createDate": $scope.participant.createDate
         }, function(error) {
@@ -328,7 +335,7 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
                 $scope.menuUtama()
             } else {
                 //alert("Data saved successfully.");
-                console.log("Firebase participants updated succesfully");
+                console.log("Firebase participants updated succesfully for id " + $scope.participant.uniqueID);
             }
         }); 
                  
@@ -383,8 +390,6 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
         
     }
     
-    /**/
-    
     
     /* ADD NEW PARTICIPANT IN FIREBASE 
     var id = undefined;
@@ -427,43 +432,38 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
     var id = undefined;
     $scope.postID = undefined;
     
+    /* ADD NEW PARTICIPANT IN FIREBASE*/
+    
     submitParticipantToFireBase = function(){
-        console.log("Create participant in Firebase");
-        var postsRef = myRef.child("participants"); 
         
-    var newPostRef = postsRef.push({
-            "name": $scope.participant.name,
-            "icNo": $scope.participant.icNo,
-            "phoneNo": $scope.participant.phoneNo,
-            "jantina": $scope.participant.jantina,
-            "alamat": $scope.participant.alamat,
-            "email": $scope.participant.email,
-            "createDateSeconds": $scope.participant.createDateSeconds,
-            "createDate": $scope.participant.createDate
+        console.log("Create participant in Firebase");
+        var postsRef = ref.child("participants"); 
+
+        var newPostRef = postsRef.push({
+                "name": $scope.participant.name,
+                "icNo": $scope.participant.icNo,
+                "phoneNo": $scope.participant.phoneNo,
+                "jantina": $scope.participant.jantina,
+                "alamat": $scope.participant.alamat,
+                "email": $scope.participant.email,
+                "createDateSeconds": $scope.participant.createDateSeconds,
+                "createDate": $scope.participant.createDate
         }, function(error){
             if (error){
                 alert("Your session has expired. Please exit the app and try again. " + error); 
             } else{
-                
-                console.log("The participants saved successfully in Firebase..");
-                //var postID = newPostRef.key();
-                /*
-                console.log("The new unique id push is: " + $scope.postID);
-                getParticipantsData()
-                $scope.participantsLocal[$scope.participantsLocal.length-1].uniqueID = $scope.postID;
-                localStorage.setItem('participantsLocal', JSON.stringify($scope.participantsLocal));
-                console.log("local storage saved.."); */
+                 console.log("The participants saved successfully in Firebase..");
             }
         }); 
-        
-        // postsRef.push();
+
         $scope.postID = newPostRef.key();
-        console.log("The new unique id push is: " + $scope.postID);
+        console.log("The new unique id participant is: " + $scope.postID);
+        
         getParticipantsData()
+        
         $scope.participantsLocal[$scope.participantsLocal.length-1].uniqueID = $scope.postID;
         localStorage.setItem('participantsLocal', JSON.stringify($scope.participantsLocal));
-        console.log("local storage saved.."); 
-        
+        //console.log("local storage saved.."); 
     }
     
     submitEntryToFireBase = function(){
@@ -476,6 +476,38 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
             $scope.participant.uniqueID = participantUniqueID;
         }
         
+        var entriesRef = ref.child("entries"); 
+
+        var newEntries = entriesRef.push({
+            "uniqueUserId": $scope.participant.uniqueID,
+            "localId": $scope.entry.localId,
+            "resitNo": $scope.entry.resitNo,
+            "gstId": $scope.entry.gstId,
+            "resitDate": $scope.entry.resitDate.toString(),
+            "resitAmount": $scope.entry.resitAmount,
+            "gstAmount": $scope.entry.gstAmount,
+            "kategori": $scope.entry.kategori,
+            "negeri": $scope.entry.negeri,
+            "createDate": $scope.entry.createDate,
+            "image": $scope.entry.image
+            
+        }, function(error){
+            if (error){
+                alert("Your session has expired. Please exit the app and try again. " + error); 
+                $scope.menuUtama()
+            } else{
+                console.log("The entries saved successfully in Firebase..");
+                Firebase.goOffline();
+            }
+        }); 
+        
+        var entryId = newEntries.key();
+         
+        console.log("The new unique id for entry is: " + entryId);
+        
+    }
+        
+        /*
          $scope.entries.$add({
                     "uniqueUserId": $scope.participant.uniqueID,
                     "localId": $scope.entry.localId,
@@ -500,8 +532,8 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
             } else {
                     //alert("Data saved successfully.");
             }
-        });
-    }
+        });*/
+    
     
     function onConfirm(button){
          if (button == 1) { // if user select Yes
@@ -520,7 +552,6 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
             localStorage.setItem('entriesLocal', JSON.stringify($scope.entriesLocal));    
             
             $scope.entry = {};
-             
             
             //redirect to page_selesai
 
@@ -588,7 +619,7 @@ angular.module('myApp', ['ionic', 'ngCordova', 'firebase'])
     $scope.submitInvoicePage3 = function(){ 
         $scope.showMenu = true;
         $scope.headerTitle = $scope.txtButiranResit//"Butiran Resit";
-        Firebase.goOnline();
+        
         takePicture2()
     }
     

@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-ad-project/sample.zip",
       "projectGuid": "e8b0774c-5b4e-44a9-b598-24e3f15fcc6b",
-      "lastModifiedDate": 1461326946089,
+      "lastModifiedDate": 1461383273897,
       "creationDate": 1456415208753
     },
     "XDK-app-designer": "true",
@@ -222,10 +222,10 @@
         "excludedLibraries_": "",
         "certificateId_": "kCa_-WA8lEyJZnz_T1swfg2",
         "cordovaCLIVersion_": "5.4.1",
-        "appVersion_": "1.1.0",
+        "appVersion_": "1.1.1",
         "appAuthor_": "Kastam DiRaja Malaysia",
         "appDescription_": "Jom Minta Resit GST",
-        "appVersionCode_": "12",
+        "appVersionCode_": "13",
         "crosswalkVersion_": "16"
       },
       "iOS": {
